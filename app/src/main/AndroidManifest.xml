@@ -12,7 +12,9 @@
         android:theme="@style/Theme.Messenger">
         <activity
             android:name=".Chat"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/CustomTheme.Messenger"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

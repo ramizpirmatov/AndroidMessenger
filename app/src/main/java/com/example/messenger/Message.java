@@ -8,7 +8,8 @@ import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToOne;
 
 @Entity
-public class Message {
+public class Message
+{
     @Id
     private long id;
     private String message;
@@ -20,33 +21,40 @@ public class Message {
     {
     }
 
-    public Message(String message, LocalTime time, boolean isUser) {
+    public Message(String message, LocalTime time, boolean isUser)
+    {
         this.message = message;
         this.time = time.toString();
         this.isUser = isUser;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getMessage() {
+    public String getMessage()
+    {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(String message)
+    {
         this.message = message;
     }
 
-    public String getTime() {
+    public String getTime()
+    {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(LocalDateTime time)
+    {
         this.time = time.toString();
     }
 

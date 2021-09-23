@@ -33,7 +33,19 @@ public class MainActivity extends AppCompatActivity
         ObjectBox.setMessageForUser(ObjectBox.userBox.get(2),"How are you sis?");
         ObjectBox.setMessageForUser(ObjectBox.userBox.get(3),"I'm trying to measure how social media influences relationship");
 */
+        setRecyclerView();
 
+    }
+
+    @Override
+    protected void onResume()
+    {
+        setRecyclerView();
+        super.onResume();
+    }
+
+    private void setRecyclerView()
+    {
         List<User> userList = ObjectBox.userBox.getAll();
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(userList);
 

@@ -6,7 +6,8 @@ import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToMany;
 
 @Entity
-public class User {
+public class User
+{
 
     @Id
     private long id;
@@ -14,37 +15,55 @@ public class User {
     private int imageResourceId;
     @Backlink
     public ToMany<Message> messages;
+    private boolean isRead = false;
+
+    public boolean isRead()
+    {
+        return isRead;
+    }
+
+    public void setRead(boolean read)
+    {
+        isRead = read;
+    }
 
     public User()
     {
     }
 
-    public User(String name, int imageResourceId) {
+    public User(String name, int imageResourceId)
+    {
         this.name = name;
         this.imageResourceId = imageResourceId;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getImageResourceId() {
+    public int getImageResourceId()
+    {
         return imageResourceId;
     }
 
-    public void setImageResourceId(int imageResourceId) {
+    public void setImageResourceId(int imageResourceId)
+    {
         this.imageResourceId = imageResourceId;
     }
 }

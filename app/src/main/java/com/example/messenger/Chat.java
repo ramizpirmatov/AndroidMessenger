@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,11 +25,14 @@ public class Chat extends AppCompatActivity
 {
 
     EditText textMessage;
-    Button sendButton;
+    ImageButton sendButton;
     RecyclerView recyclerView;
     RecyclerViewChatMessagesAdapter adapter;
+    ImageView toolBarImageView;
+    TextView toolBarTextView;
     private static User user;
     private int countOfMyMessages = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,9 +43,18 @@ public class Chat extends AppCompatActivity
         textMessage = findViewById(R.id.edit_text_chat_message);
         sendButton = findViewById(R.id.button_send_message);
         recyclerView = findViewById(R.id.recycler_view_chat);
+        toolBarImageView = findViewById(R.id.toolbar_contact_image);
+        toolBarTextView = findViewById(R.id.toolbar_contact_name);
+
+        toolBarImageView.setImageResource(user.getImageResourceId());
+        toolBarTextView.setText(user.getName());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Message> messages = ObjectBox.getMessagesByUser(user);
+        user.setRead(true);
+        ObjectBox.userBox.put(user);
+
 
         for (int i = messages.size() - 1; i >= 0; i--)
         {
@@ -69,6 +84,7 @@ public class Chat extends AppCompatActivity
 
                     setRecyclerView();
                     recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                    textMessage.getText().clear();
                 }
             }
         });

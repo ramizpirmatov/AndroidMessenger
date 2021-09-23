@@ -40,7 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(user.getName());
         holder.message.setText(message.getMessage());
         holder.time.setText(message.getTime());
-        holder.numberOfMessage.setText(String.valueOf(user.messages.size()));
+        if (!user.isRead()) holder.numberOfMessage.setText(String.valueOf(user.messages.size()));
+        else holder.numberOfMessage.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {

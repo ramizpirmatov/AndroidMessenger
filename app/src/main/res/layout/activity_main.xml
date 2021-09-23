@@ -1,52 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#81A2DA"
+    android:background="#8a65f1"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/top_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/banner_top_my_image_view"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#a78bf4"
+            app:cardCornerRadius="30dp">
+
+            <EditText
+                android:id="@+id/banner_top_search_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_of_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_banner"
+        android:background="@drawable/rounded_corner"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:background="@drawable/round_whole_corners"
+            android:text="@string/message"
+            android:textColor="#9574f1"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginEnd="60dp"
+            android:background="@drawable/round_whole_corners"
+            android:gravity="right"
+            android:text="@string/active"
+            android:textColor="#9574f1"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chats"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/rounded_corner"
-        android:paddingStart="20dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/banner_view"
-        android:paddingEnd="10dp"
-        android:paddingTop="15dp">
+        android:layout_below="@+id/top_of_recycler_view"
+        android:background="@color/white"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="10dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
         android:id="@+id/banner_view"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#A9A9A9"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layout_border"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <ImageView
             android:id="@+id/main_chats_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentStart="true"
-            android:src="@drawable/messenger"
+            android:layout_centerVertical="true"
             android:layout_marginStart="60dp"
-            android:layout_centerVertical="true"/>
+            android:layout_marginTop="20dp"
+            android:src="@drawable/msg_3" />
 
         <ImageView
             android:id="@+id/main_contacts_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/contacts"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="60dp"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/cntcts" />
     </RelativeLayout>
 
 

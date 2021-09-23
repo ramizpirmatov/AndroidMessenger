@@ -30,7 +30,7 @@
     },
     {
       "id": "2:4623659337997953793",
-      "lastPropertyId": "4:1585270330016512981",
+      "lastPropertyId": "5:5396070929654296214",
       "name": "Message",
       "properties": [
         {
@@ -56,6 +56,12 @@
           "type": 11,
           "flags": 1548,
           "relationTarget": "User"
+        },
+        {
+          "id": "5:5396070929654296214",
+          "name": "isUser",
+          "type": 1,
+          "flags": 4
         }
       ],
       "relations": []

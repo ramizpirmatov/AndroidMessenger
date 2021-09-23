@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEE9E3"
     android:orientation="vertical"
     tools:context=".Chat">
+
+    <include layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chat"
@@ -14,6 +17,10 @@
         android:layout_weight="15">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,16 +31,30 @@
         <EditText
             android:id="@+id/edit_text_chat_message"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
             android:layout_weight="4"
-            tools:ignore="NestedWeights" />
+            android:background="@drawable/custom_edit_text"
+            tools:ignore="NestedWeights"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"/>
 
-        <Button
+        <!--<Button
             android:id="@+id/button_send_message"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/send"/>
+            android:text="@string/send"
+            android:backgroundTint="@color/black"/>-->
+
+        <ImageButton
+            android:id="@+id/button_send_message"
+            android:layout_width="0dp"
+            android:background="@drawable/custom_button"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:src="@drawable/icon_send"
+            android:text="@string/send" />
 
     </LinearLayout>
 

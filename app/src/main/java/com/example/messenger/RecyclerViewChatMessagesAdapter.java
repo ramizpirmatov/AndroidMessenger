@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -30,13 +31,15 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_chat, parent, false);
+        View view;
 
         if (viewType == ViewType.VIEW_TYPE_USER_MSG)
         {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_chat_user, parent, false);
             return new UserMessageViewHolder(view);
         }
 
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_chat_me, parent, false);
         return new MyMessageViewHolder(view);
     }
 
@@ -69,10 +72,12 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
     {
 
         TextView textViewLeft;
+        View itemView;
 
         public UserMessageViewHolder(@NonNull View itemView)
         {
             super(itemView);
+            this.itemView = itemView;
             textViewLeft = itemView.findViewById(R.id.chat_text_view_message);
         }
 
@@ -80,7 +85,6 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
         void bind(Message message)
         {
             textViewLeft.setVisibility(View.VISIBLE);
-            textViewRight.setVisibility(View.GONE);
             textViewLeft.setText(message.getMessage());
         }
     }
@@ -100,7 +104,6 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
         void bind(Message message)
         {
             textViewRight.setVisibility(View.VISIBLE);
-            textViewLeft.setVisibility(View.GONE);
             textViewRight.setText(message.getMessage());
         }
     }
@@ -108,15 +111,9 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
     public abstract static class BaseViewHolder extends RecyclerView.ViewHolder
     {
 
-        TextView textViewLeft;
-        TextView textViewRight;
-
         public BaseViewHolder(@NonNull View itemView)
         {
             super(itemView);
-
-            textViewLeft = itemView.findViewById(R.id.chat_text_view_message);
-            textViewRight = itemView.findViewById(R.id.chat_text_view_my_message);
         }
 
         void bind(Message message)
