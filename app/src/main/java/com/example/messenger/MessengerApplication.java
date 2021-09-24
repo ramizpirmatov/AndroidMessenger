@@ -3,11 +3,13 @@ package com.example.messenger;
 import android.app.Application;
 import android.util.Log;
 
-public class InitObjectBox extends Application {
+import com.example.messenger.db.DataBaseController;
+
+public class MessengerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d("TAG", "onCreate: init cagirildi");
-        ObjectBox.init(this);
+        DataBaseController.init(this);
     }
 }

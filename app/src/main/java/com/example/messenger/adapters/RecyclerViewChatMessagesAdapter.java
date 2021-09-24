@@ -1,4 +1,4 @@
-package com.example.messenger;
+package com.example.messenger.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.messenger.model.Message;
+import com.example.messenger.R;
 
 import java.util.List;
 

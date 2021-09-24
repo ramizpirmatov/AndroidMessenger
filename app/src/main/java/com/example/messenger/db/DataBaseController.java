@@ -1,13 +1,17 @@
 
-package com.example.messenger;
+package com.example.messenger.db;
 
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import java.time.LocalDateTime;
+import com.example.messenger.BuildConfig;
+import com.example.messenger.model.Message;
+import com.example.messenger.model.MyObjectBox;
+import com.example.messenger.model.User;
+import com.example.messenger.model.User_;
+
 import java.time.LocalTime;
 import java.util.List;
 
@@ -16,11 +20,21 @@ import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
 
 
-public class ObjectBox
+public class DataBaseController
 {
 
     private static BoxStore boxStore;
-    public static Box<User> userBox;
+    private static Box<User> userBox;
+
+    public static Box<User> getUserBox()
+    {
+        return userBox;
+    }
+
+    public static void setUserBox(Box<User> userBox)
+    {
+        DataBaseController.userBox = userBox;
+    }
 
     public static void init(Context context)
     {
@@ -46,7 +60,7 @@ public class ObjectBox
 
     public static void setBoxStore(BoxStore boxStore)
     {
-        ObjectBox.boxStore = boxStore;
+        DataBaseController.boxStore = boxStore;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -54,7 +68,7 @@ public class ObjectBox
     {
         Message message = new Message(msg, LocalTime.now(), true);
 
-        user.messages.add(message);
+        user.getMessages().add(message);
 
         userBox.put(user);
     }
@@ -64,24 +78,19 @@ public class ObjectBox
     {
         Message message = new Message(msg, LocalTime.now(), false);
 
-        user.messages.add(message);
+        user.getMessages().add(message);
 
         userBox.put(user);
     }
 
     public static List<Message> getMessagesByUser(User user)
     {
-        return user.messages;
+        return user.getMessages();
     }
 
     public static User getUserById(long id)
     {
         return boxStore.boxFor(User.class).query().equal(User_.id, id).build().find().get(0);
-    }
-
-    public static Message getLastMessageByUser(User user)
-    {
-           return user.messages.get(user.messages.size() - 1);
     }
 }
 

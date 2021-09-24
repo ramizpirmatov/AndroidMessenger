@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:3807768008431782699",
-      "lastPropertyId": "5:7858881723356821838",
+      "lastPropertyId": "6:2430968397875376694",
       "name": "User",
       "properties": [
         {
@@ -81,7 +81,8 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    5253895335581645036
+    5253895335581645036,
+    2430968397875376694
   ],
   "retiredRelationUids": [],
   "version": 1

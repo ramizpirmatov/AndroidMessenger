@@ -1,4 +1,6 @@
-package com.example.messenger;
+package com.example.messenger.model;
+
+import com.example.messenger.model.Message;
 
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
@@ -14,18 +16,8 @@ public class User
     private String name;
     private String path;
     @Backlink
-    public ToMany<Message> messages;
+    private ToMany<Message> messages;
     private boolean isRead = false;
-
-    public boolean isRead()
-    {
-        return isRead;
-    }
-
-    public void setRead(boolean read)
-    {
-        isRead = read;
-    }
 
     public User()
     {
@@ -35,6 +27,31 @@ public class User
     {
         this.name = name;
         this.path = path;
+    }
+
+    public ToMany<Message> getMessages()
+    {
+        return messages;
+    }
+
+    public void setMessages(ToMany<Message> messages)
+    {
+        this.messages = messages;
+    }
+
+    public Message getLastMessage()
+    {
+        return messages.get(messages.size() - 1);
+    }
+
+    public boolean isRead()
+    {
+        return isRead;
+    }
+
+    public void setRead(boolean read)
+    {
+        isRead = read;
     }
 
     public long getId()

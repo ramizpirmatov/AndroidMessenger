@@ -1,4 +1,4 @@
-package com.example.messenger;
+package com.example.messenger.model;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

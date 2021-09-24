@@ -1,9 +1,7 @@
-package com.example.messenger;
+package com.example.messenger.adapters;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import com.example.messenger.utils.Utils;
+import com.example.messenger.model.Message;
+import com.example.messenger.R;
+import com.example.messenger.model.User;
+import com.example.messenger.ui.ChatActivity;
+
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
@@ -40,13 +41,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         User user = userList.get(holder.getAdapterPosition());
-        Message message = ObjectBox.getLastMessageByUser(user);
+        Message message = user.getLastMessage();
 
-        loadImageFromStorage(user.getPath(), holder, getImageName(user.getPath()));
+        Bitmap bitmap = Utils.loadImageFromStorage(user.getPath());
+        holder.imageView.setImageBitmap(bitmap);
         holder.name.setText(user.getName());
         holder.message.setText(message.getMessage());
         holder.time.setText(message.getTime());
-        if (!user.isRead()) holder.numberOfMessage.setText(String.valueOf(getNumberOfMessages(user.messages)));
+        if (!user.isRead()) holder.numberOfMessage.setText(Utils.getNumberOfUnReadMessagesString(user));
         else holder.numberOfMessage.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener()
@@ -54,46 +56,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view)
             {
-                Chat.setUser(user);
-                Intent intent = new Intent(view.getContext(), Chat.class);
+                ChatActivity.setUser(user);
+                Intent intent = new Intent(view.getContext(), ChatActivity.class);
                 view.getContext().startActivity(intent);
             }
         });
-    }
-
-    private int getNumberOfMessages(List<Message> messages)
-    {
-        int count = 0;
-
-        for (int i = 0; i < messages.size(); i++)
-        {
-            if (!messages.get(i).isUser()) break;
-            count++;
-        }
-
-        return count;
-    }
-
-    private String getImageName(String path)
-    {
-        String[] pathPieces = path.split("[/_]");
-
-        return pathPieces[pathPieces.length - 1];
-    }
-
-    private void loadImageFromStorage(String path, MyViewHolder holder, String name)
-    {
-        Log.d("TAG", "loadImageFromStorage: " + name);
-        Log.d("TAG", "loadImageFromStoragePath: " + path);
-        try
-        {
-            File f = new File(path, name);
-            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-            holder.imageView.setImageBitmap(b);
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     @Override

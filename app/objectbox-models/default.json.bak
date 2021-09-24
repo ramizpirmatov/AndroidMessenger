@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:3807768008431782699",
-      "lastPropertyId": "4:8905343174815221245",
+      "lastPropertyId": "6:2430968397875376694",
       "name": "User",
       "properties": [
         {
@@ -20,16 +20,20 @@
           "type": 9
         },
         {
-          "id": "3:5253895335581645036",
-          "name": "imageResourceId",
-          "type": 5,
-          "flags": 4
-        },
-        {
           "id": "4:8905343174815221245",
           "name": "isRead",
           "type": 1,
           "flags": 4
+        },
+        {
+          "id": "5:7858881723356821838",
+          "name": "path",
+          "type": 9
+        },
+        {
+          "id": "6:2430968397875376694",
+          "name": "lastMessage",
+          "type": 9
         }
       ],
       "relations": []
@@ -81,7 +85,9 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    5253895335581645036
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

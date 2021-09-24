@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8a65f1"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <LinearLayout
         android:id="@+id/top_banner"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_banner"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/rounded_2_corner"
         android:orientation="horizontal">
 
         <TextView

@@ -1,4 +1,4 @@
-package com.example.messenger;
+package com.example.messenger.ui;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.example.messenger.db.DataBaseController;
+import com.example.messenger.R;
+import com.example.messenger.adapters.RecyclerViewAdapter;
+import com.example.messenger.model.User;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setRecyclerView()
     {
-        List<User> userList = ObjectBox.userBox.getAll();
+        List<User> userList = DataBaseController.getUserBox().getAll();
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(userList);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_chats);
