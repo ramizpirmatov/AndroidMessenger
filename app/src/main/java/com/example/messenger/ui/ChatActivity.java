@@ -1,13 +1,18 @@
 package com.example.messenger.ui;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -33,6 +38,7 @@ public class ChatActivity extends AppCompatActivity
     private RecyclerViewChatMessagesAdapter adapter;
     private ImageView toolBarImageView;
     private TextView toolBarTextView;
+    private Toolbar toolbar;
     private static User user;
     private int countOfMyMessages = 0;
 
@@ -42,6 +48,12 @@ public class ChatActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         textMessage = findViewById(R.id.edit_text_chat_message);
         sendButton = findViewById(R.id.button_send_message);
@@ -59,7 +71,7 @@ public class ChatActivity extends AppCompatActivity
         user.setRead(true);
         DataBaseController.getUserBox().put(user);
 
-        countOfMyMessages = Utils.getNumberOfMyLastMessages(messages);
+        countOfMyMessages = user.getNumberOfMyLastMessages();
 
         adapter = new RecyclerViewChatMessagesAdapter(messages);
         recyclerView.setAdapter(adapter);
@@ -87,6 +99,14 @@ public class ChatActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(myIntent);
+        return true;
     }
 
     public static void setUser(User user)

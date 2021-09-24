@@ -48,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(user.getName());
         holder.message.setText(message.getMessage());
         holder.time.setText(message.getTime());
-        if (!user.isRead()) holder.numberOfMessage.setText(Utils.getNumberOfUnReadMessagesString(user));
+        if (!user.isRead()) holder.numberOfMessage.setText(user.getNumberOfUnReadMessagesString());
         else holder.numberOfMessage.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener()

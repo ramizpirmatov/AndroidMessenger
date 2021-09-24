@@ -1,7 +1,13 @@
 package com.example.messenger.model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -21,10 +27,13 @@ public class Message
     {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public Message(String message, LocalTime time, boolean isUser)
     {
+        DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE_TIME;
+
         this.message = message;
-        this.time = time.toString();
+        this.time = time.truncatedTo(ChronoUnit.MINUTES).toString();
         this.isUser = isUser;
     }
 

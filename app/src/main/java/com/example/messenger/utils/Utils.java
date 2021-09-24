@@ -12,19 +12,7 @@ import java.util.List;
 
 public class Utils
 {
-    public static String getNumberOfUnReadMessagesString(User user)
-    {
-        int count = 0;
-        List<Message> messages = user.getMessages();
 
-        for (int i = messages.size() - 1; i > 0; i--)
-        {
-            if (!messages.get(i).isUser()) break;
-            count++;
-        }
-
-        return String.valueOf(count);
-    }
 
     public static String getImageName(String path)
     {
@@ -48,18 +36,5 @@ public class Utils
         }
 
         return bitmap;
-    }
-
-    public static int getNumberOfMyLastMessages(List<Message> messages)
-    {
-        int countOfMyMessages = 0;
-
-        for (int i = messages.size() - 1; i >= 0; i--)
-        {
-            if (messages.get(i).isUser()) break;
-            countOfMyMessages++;
-        }
-
-        return countOfMyMessages;
     }
 }

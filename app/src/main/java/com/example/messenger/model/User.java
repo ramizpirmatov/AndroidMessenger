@@ -2,6 +2,8 @@ package com.example.messenger.model;
 
 import com.example.messenger.model.Message;
 
+import java.util.List;
+
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -27,6 +29,32 @@ public class User
     {
         this.name = name;
         this.path = path;
+    }
+
+    public String getNumberOfUnReadMessagesString()
+    {
+        int count = 0;
+
+        for (int i = messages.size() - 1; i >= 0; i--)
+        {
+            if (!messages.get(i).isUser()) break;
+            count++;
+        }
+
+        return String.valueOf(count);
+    }
+
+    public int getNumberOfMyLastMessages()
+    {
+        int countOfMyMessages = 0;
+
+        for (int i = messages.size() - 1; i >= 0; i--)
+        {
+            if (messages.get(i).isUser()) break;
+            countOfMyMessages++;
+        }
+
+        return countOfMyMessages;
     }
 
     public ToMany<Message> getMessages()

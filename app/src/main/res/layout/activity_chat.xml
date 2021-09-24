@@ -8,8 +8,9 @@
     android:orientation="vertical"
     tools:context=".ui.ChatActivity">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chat"
@@ -17,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         android:background="@drawable/rounded_2_corner"
-        android:padding="20dp">
+        android:padding="15dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -25,33 +26,39 @@
         android:id="@+id/chatting_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <EditText
             android:id="@+id/edit_text_chat_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_toStartOf="@+id/button_send_message"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/button_send_message_card_view"
             android:background="@drawable/custom_edit_text"
             android:gravity="center_vertical"
             android:hint="@string/text_message"
-            android:padding="5dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="10dp"/>
+            android:padding="7dp"/>
 
-        <ImageButton
-            android:id="@+id/button_send_message"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/button_send_message_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="7dp"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/custom_button"
-            android:foregroundGravity="center_vertical"
-            android:src="@drawable/send_2"
-            android:text="@string/send"
-            android:paddingEnd="5dp"/>
+            android:foregroundGravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/button_send_message"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="#8a65f1"
+                android:src="@drawable/send"
+                android:text="@string/send" />
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
