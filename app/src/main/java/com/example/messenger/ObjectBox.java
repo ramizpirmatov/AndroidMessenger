@@ -32,7 +32,6 @@ public class ObjectBox
             if (BuildConfig.DEBUG)
             {
                 boolean started = new AndroidObjectBrowser(boxStore).start(context.getApplicationContext());
-                Log.i("ObjectBrowser", "Started: " + started);
             }
 
             userBox = boxStore.boxFor(User.class);

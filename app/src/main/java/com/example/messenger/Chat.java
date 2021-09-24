@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,7 +51,7 @@ public class Chat extends AppCompatActivity
         toolBarImageView = findViewById(R.id.toolbar_contact_image);
         toolBarTextView = findViewById(R.id.toolbar_contact_name);
 
-        toolBarImageView.setImageResource(user.getImageResourceId());
+        loadImageFromStorage(toolBarImageView, user.getPath(), getImageName(user.getPath()));
         toolBarTextView.setText(user.getName());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -88,6 +93,26 @@ public class Chat extends AppCompatActivity
                 }
             }
         });
+    }
+
+    private String getImageName(String path)
+    {
+        String[] pathPieces = path.split("[/_]");
+
+        return pathPieces[pathPieces.length - 1];
+    }
+
+    private void loadImageFromStorage(ImageView toolBarImageView,String path, String name)
+    {
+        try
+        {
+            File f = new File(path, name);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            toolBarImageView.setImageBitmap(b);
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public static void setUser(User user)

@@ -3,25 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
-    android:background="#2EB1D1">
+    android:background="#8a65f1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/image_card_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="50dp">
-
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/toolbar_contact_image"
-                android:layout_width="60dp"
-                android:layout_height="match_parent" />
-
-        </androidx.cardview.widget.CardView>
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                app:civ_border_width="0dp"/>
 
         <TextView
             android:id="@+id/toolbar_contact_name"

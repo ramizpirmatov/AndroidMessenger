@@ -116,9 +116,6 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
             super(itemView);
         }
 
-        void bind(Message message)
-        {
-
-        }
+        abstract void bind(Message message);
     }
 }

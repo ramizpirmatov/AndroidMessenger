@@ -40,6 +40,10 @@ dependencies {
 //    For ObjectBox data browser
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+
+    // circular image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
 }
 
 apply plugin: 'io.objectbox'

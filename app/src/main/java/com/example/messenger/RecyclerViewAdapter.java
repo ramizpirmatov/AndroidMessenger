@@ -1,6 +1,9 @@
 package com.example.messenger;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
@@ -27,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_chats, parent, false);
-        return  new MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -36,11 +42,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         User user = userList.get(holder.getAdapterPosition());
         Message message = ObjectBox.getLastMessageByUser(user);
 
-        holder.imageView.setImageResource(user.getImageResourceId());
+        loadImageFromStorage(user.getPath(), holder, getImageName(user.getPath()));
         holder.name.setText(user.getName());
         holder.message.setText(message.getMessage());
         holder.time.setText(message.getTime());
-        if (!user.isRead()) holder.numberOfMessage.setText(String.valueOf(user.messages.size()));
+        if (!user.isRead()) holder.numberOfMessage.setText(String.valueOf(getNumberOfMessages(user.messages)));
         else holder.numberOfMessage.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener()
@@ -53,6 +59,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 view.getContext().startActivity(intent);
             }
         });
+    }
+
+    private int getNumberOfMessages(List<Message> messages)
+    {
+        int count = 0;
+
+        for (int i = 0; i < messages.size(); i++)
+        {
+            if (!messages.get(i).isUser()) break;
+            count++;
+        }
+
+        return count;
+    }
+
+    private String getImageName(String path)
+    {
+        String[] pathPieces = path.split("[/_]");
+
+        return pathPieces[pathPieces.length - 1];
+    }
+
+    private void loadImageFromStorage(String path, MyViewHolder holder, String name)
+    {
+        Log.d("TAG", "loadImageFromStorage: " + name);
+        Log.d("TAG", "loadImageFromStoragePath: " + path);
+        try
+        {
+            File f = new File(path, name);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            holder.imageView.setImageBitmap(b);
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

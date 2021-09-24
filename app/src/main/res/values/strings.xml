@@ -3,4 +3,6 @@
     <string name="send">send</string>
     <string name="message">Message</string>
     <string name="active">Active</string>
+    <string name="search_message">Search message</string>
+    <string name="text_message">Text message</string>
 </resources>

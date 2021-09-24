@@ -12,7 +12,7 @@ public class User
     @Id
     private long id;
     private String name;
-    private int imageResourceId;
+    private String path;
     @Backlink
     public ToMany<Message> messages;
     private boolean isRead = false;
@@ -31,10 +31,10 @@ public class User
     {
     }
 
-    public User(String name, int imageResourceId)
+    public User(String name, String path)
     {
         this.name = name;
-        this.imageResourceId = imageResourceId;
+        this.path = path;
     }
 
     public long getId()
@@ -57,13 +57,13 @@ public class User
         this.name = name;
     }
 
-    public int getImageResourceId()
+    public String getPath()
     {
-        return imageResourceId;
+        return path;
     }
 
-    public void setImageResourceId(int imageResourceId)
+    public void setPath(String path)
     {
-        this.imageResourceId = imageResourceId;
+        this.path = path;
     }
 }

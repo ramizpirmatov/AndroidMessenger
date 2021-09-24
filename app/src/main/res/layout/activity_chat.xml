@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE9E3"
     android:orientation="vertical"
     tools:context=".Chat">
 
@@ -14,7 +13,9 @@
         android:id="@+id/recycler_view_chat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15">
+        android:layout_weight="15"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -22,41 +23,36 @@
         android:layout_width="match_parent"
         android:layout_height="2dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="0.9"
+        android:orientation="horizontal"
+        android:padding="3dp">
 
         <EditText
             android:id="@+id/edit_text_chat_message"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
-            android:layout_weight="4"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/custom_edit_text"
             tools:ignore="NestedWeights"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="5dp"/>
-
-        <!--<Button
-            android:id="@+id/button_send_message"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/send"
-            android:backgroundTint="@color/black"/>-->
+            android:hint="@string/text_message"
+            android:gravity="center_vertical"
+            android:layout_toStartOf="@+id/button_send_message"/>
 
         <ImageButton
             android:id="@+id/button_send_message"
-            android:layout_width="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:background="@drawable/custom_button"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:src="@drawable/icon_send"
+            android:src="@drawable/send_2"
+            android:foregroundGravity="center_vertical"
             android:text="@string/send" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>
