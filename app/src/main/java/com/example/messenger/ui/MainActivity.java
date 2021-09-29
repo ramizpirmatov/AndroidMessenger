@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity
 
         DataBaseController.getUserBox().put(new User("Jhonny", person1));
         DataBaseController.getUserBox().put(new User("Jessica", person2));
-        DataBaseController.getUserBox().put(new User("Josh", person3));
+        DataBaseController.getUserBox().put(new User("Josh", person3));*/
 
-        DataBaseController.setMessageForUser(DataBaseController.getUserBox().get(1),"The Lord will help you and see you through. Don't stress.");
-        DataBaseController.setMessageForUser(DataBaseController.getUserBox().get(2),"How are you sis?");
-        DataBaseController.setMessageForUser(DataBaseController.getUserBox().get(3),"I'm trying to measure how social media influences relationship");*/
         setRecyclerView();
 
     }

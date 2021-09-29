@@ -2,13 +2,10 @@ package com.example.messenger.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import com.example.messenger.model.Message;
-import com.example.messenger.model.User;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
 
 public class Utils
 {

@@ -59,7 +59,7 @@
           "name": "userId",
           "indexId": "1:5253543921696234638",
           "type": 11,
-          "flags": 1548,
+          "flags": 524,
           "relationTarget": "User"
         },
         {

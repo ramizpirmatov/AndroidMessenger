@@ -44,27 +44,9 @@ public class User
         return String.valueOf(count);
     }
 
-    public int getNumberOfMyLastMessages()
-    {
-        int countOfMyMessages = 0;
-
-        for (int i = messages.size() - 1; i >= 0; i--)
-        {
-            if (messages.get(i).isUser()) break;
-            countOfMyMessages++;
-        }
-
-        return countOfMyMessages;
-    }
-
     public ToMany<Message> getMessages()
     {
         return messages;
-    }
-
-    public void setMessages(ToMany<Message> messages)
-    {
-        this.messages = messages;
     }
 
     public Message getLastMessage()
@@ -105,10 +87,5 @@ public class User
     public String getPath()
     {
         return path;
-    }
-
-    public void setPath(String path)
-    {
-        this.path = path;
     }
 }

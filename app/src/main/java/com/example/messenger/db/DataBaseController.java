@@ -12,9 +12,6 @@ import com.example.messenger.model.MyObjectBox;
 import com.example.messenger.model.User;
 import com.example.messenger.model.User_;
 
-import java.time.LocalTime;
-import java.util.List;
-
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
@@ -29,11 +26,6 @@ public class DataBaseController
     public static Box<User> getUserBox()
     {
         return userBox;
-    }
-
-    public static void setUserBox(Box<User> userBox)
-    {
-        DataBaseController.userBox = userBox;
     }
 
     public static void init(Context context)
@@ -53,39 +45,11 @@ public class DataBaseController
 
     }
 
-    public static BoxStore getBoxStore()
-    {
-        return boxStore;
-    }
-
-    public static void setBoxStore(BoxStore boxStore)
-    {
-        DataBaseController.boxStore = boxStore;
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void setMessageForUser(User user, String msg)
+    public static void setMessageForUser(User user, Message message)
     {
-        Message message = new Message(msg, LocalTime.now(), true);
-
         user.getMessages().add(message);
-
         userBox.put(user);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void setMyMessageForUser(User user, String msg)
-    {
-        Message message = new Message(msg, LocalTime.now(), false);
-
-        user.getMessages().add(message);
-
-        userBox.put(user);
-    }
-
-    public static List<Message> getMessagesByUser(User user)
-    {
-        return user.getMessages();
     }
 
     public static User getUserById(long id)

@@ -21,6 +21,7 @@ public class Message
     private String message;
     private String time;
     private boolean isUser;
+    public long userId;
     public ToOne<User> user;
 
     public Message()
@@ -62,18 +63,20 @@ public class Message
         return time;
     }
 
-    public void setTime(LocalDateTime time)
-    {
-        this.time = time.toString();
-    }
-
     public boolean isUser()
     {
         return isUser;
     }
 
-    public void setUser(boolean user)
+    @Override
+    public String toString()
     {
-        isUser = user;
+        return "Message{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", time='" + time + '\'' +
+                ", isUser=" + isUser +
+                ", userId=" + userId +
+                '}';
     }
 }

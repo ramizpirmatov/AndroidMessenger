@@ -29,11 +29,6 @@
           "id": "5:7858881723356821838",
           "name": "path",
           "type": 9
-        },
-        {
-          "id": "6:2430968397875376694",
-          "name": "lastMessage",
-          "type": 9
         }
       ],
       "relations": []
@@ -86,7 +81,8 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    5253895335581645036
+    5253895335581645036,
+    2430968397875376694
   ],
   "retiredRelationUids": [],
   "version": 1
