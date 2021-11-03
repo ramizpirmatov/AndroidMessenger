@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/check_box_outline.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/check_circle_checked.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/check_circle_outline.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/check_circle_unchecked.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/custom_button.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/custom_checkbox.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/custom_edit_text.xml" value="0.18055555555555555" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/layout_border.xml" value="0.17685185185185184" />
@@ -16,8 +21,14 @@
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/rounded_2_corner.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/rounded_corner.xml" value="0.2" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/drawable/user_message_corners.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/active_chats_toolbar.xml" value="0.259375" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/activity_chat.xml" value="0.259375" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/activity_sign_in.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/checkbox.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/fragment_active_chats.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/fragment_blank.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/fragment_contacts.xml" value="0.259375" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/recycler_view_chat_user.xml" value="0.25" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/recycler_view_item.xml" value="0.264" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/recycler_view_item_chat.xml" value="0.259375" />
@@ -25,6 +36,8 @@
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/recycler_view_item_chat_user.xml" value="0.259375" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/recycler_view_item_chats.xml" value="0.259375" />
         <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/layout/toolbar.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/menu/bottom_menu.xml" value="0.259375" />
+        <entry key="..\:/Users/Ramiz/AndroidStudioProjects/Messenger/app/src/main/res/menu/toolbar_menu.xml" value="0.259375" />
       </map>
     </option>
   </component>

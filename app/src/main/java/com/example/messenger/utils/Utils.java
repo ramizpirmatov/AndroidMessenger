@@ -1,37 +1,42 @@
 package com.example.messenger.utils;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import com.dslplatform.json.DslJson;
+import com.dslplatform.json.JsonWriter;
+import com.dslplatform.json.runtime.Settings;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Utils
 {
 
+    private final static DslJson<Object> dslJson = new DslJson<>(Settings.basicSetup());
 
-    public static String getImageName(String path)
+    public static String toDslJson(Object object)
     {
-        String[] pathPieces = path.split("[/_]");
-
-        return pathPieces[pathPieces.length - 1];
-    }
-
-    public static Bitmap loadImageFromStorage(String path)
-    {
-        Bitmap bitmap = null;
-        String name = getImageName(path);
+        JsonWriter writer = dslJson.newWriter();
 
         try
         {
-            File f = new File(path, name);
-            bitmap = BitmapFactory.decodeStream(new FileInputStream(f));
-        } catch (FileNotFoundException e)
+            dslJson.serialize(writer, object);
+            return writer.toString();
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
+        return null;
+    }
 
-        return bitmap;
+    public static <T> T fromDslJson(Class<T> type, String json)
+    {
+        try
+        {
+            return dslJson.deserialize(type, json.getBytes(), json.getBytes().length);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

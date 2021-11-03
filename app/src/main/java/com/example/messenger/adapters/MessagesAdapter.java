@@ -9,12 +9,12 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.messenger.model.Message;
 import com.example.messenger.R;
+import com.example.messenger.model.Message;
 
 import java.util.List;
 
-public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<RecyclerViewChatMessagesAdapter.BaseViewHolder>
+public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.BaseViewHolder>
 {
 
     private List<Message> messageList;
@@ -24,7 +24,7 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
         this.messageList = messageList;
     }
 
-    public RecyclerViewChatMessagesAdapter(List<Message> messageList)
+    public MessagesAdapter(List<Message> messageList)
     {
         this.messageList = messageList;
     }
@@ -52,7 +52,8 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
     }
 
     @IntDef({ViewType.VIEW_TYPE_MY_MSG, ViewType.VIEW_TYPE_USER_MSG})
-    @interface ViewType{
+    @interface ViewType
+    {
         int VIEW_TYPE_MY_MSG = 0;
         int VIEW_TYPE_USER_MSG = 1;
     }
@@ -75,19 +76,24 @@ public class RecyclerViewChatMessagesAdapter extends RecyclerView.Adapter<Recycl
 
         TextView textViewLeft;
         View itemView;
+        TextView contactNameInGroup;
 
         public UserMessageViewHolder(@NonNull View itemView)
         {
             super(itemView);
             this.itemView = itemView;
             textViewLeft = itemView.findViewById(R.id.chat_text_view_message);
+            contactNameInGroup = itemView.findViewById(R.id.contact_name_in_group);
         }
 
         @Override
         void bind(Message message)
         {
-            textViewLeft.setVisibility(View.VISIBLE);
-            textViewLeft.setText(message.getMessage());
+                textViewLeft.setVisibility(View.VISIBLE);
+                textViewLeft.setText(message.getMessage());
+
+                contactNameInGroup.setVisibility(View.VISIBLE);
+                contactNameInGroup.setText(message.getUser().getName());
         }
     }
 

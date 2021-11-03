@@ -2,11 +2,11 @@ package com.example.messenger.handler;
 
 import com.example.messenger.model.Message;
 
-public class MessageEvent
+public class FirebaseMessageEvent
 {
-    private Message message;
+    Message message;
 
-    public MessageEvent(Message message)
+    public FirebaseMessageEvent(Message message)
     {
         this.message = message;
     }
